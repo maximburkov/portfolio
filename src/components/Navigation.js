@@ -11,7 +11,7 @@ export default class Navigation extends Component {
     render() {
         return (
             <div>
-                <Navbar>
+                <Navbar bg="light" expand="lg">
                     <Navbar.Brand as={Link} to="/About">Home</Navbar.Brand>
                     <Navbar.Collapse>
                         <Nav className="mr-auto">
