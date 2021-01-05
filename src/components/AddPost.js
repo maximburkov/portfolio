@@ -8,7 +8,10 @@ class AddPost extends Component {
       }
 
     handleAddPost = () => {
-        this.props.addPost("some payload");
+        const title = document.getElementById("post-title").value;
+        const text = document.getElementById("post-text").value;
+
+        this.props.addPost({title, text});
     }
     
     render() {
@@ -16,9 +19,9 @@ class AddPost extends Component {
             <div>
                 <h2>Add new post:</h2>
                 <label>Title:</label>
-                <input type="text"></input>
+                <input id="post-title" type="text"></input>
                 <label>Text:</label>
-                <input type="text"></input>
+                <input id="post-text" type="text"></input>
                 <button onClick={this.handleAddPost }>Create</button>
             </div>
         )
@@ -29,5 +32,3 @@ export default connect(
     null,
     { addPost }
   )(AddPost);
-
-//export default AddPost;

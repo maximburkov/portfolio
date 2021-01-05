@@ -6,27 +6,7 @@ import Post from './Post'
 class Blog extends Component {
     constructor(props) {
         super(props);
-        
-        // var posts = [
-        //     {
-        //         "title" : "Shocking news",
-        //         "text" : "It was yesterday..."
-        //     },
-        //     {
-        //         "title" : "Good news",
-        //         "text" : "Baby tiger was born in the zoo."
-        //     }
-        // ];
-
-        // this.state = {
-        //     posts: posts
-        // };
       }
-
-    // componentDidMount() {
-
-    // }
-    
 
     render() {
         const postsToRender = this.props.posts.map((post) => 
@@ -43,7 +23,7 @@ class Blog extends Component {
 }
 
 const mapStateToProps = state => {
-    const posts = state.posts;
+    const posts = state.posts.posts;
     return { posts };
 }
 

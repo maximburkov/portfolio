@@ -8,7 +8,7 @@ const posts = [
     },
     {
         "title" : "Good news",
-        "text" : "Baby tiger was born in the zoo."
+        "text" : "It's good."
     },
     {
         "title" : "3rd news",
@@ -16,4 +16,10 @@ const posts = [
     }
 ];
 
-export default createStore(rootReducer, { posts }, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const initialState = {
+    posts : {
+        posts
+    }
+};
+
+export default createStore(rootReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
