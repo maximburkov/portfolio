@@ -10,7 +10,7 @@ class Blog extends Component {
 
     render() {
         const postsToRender = this.props.posts.map((post) => 
-            <Post title={post.title} text={post.text}/>);
+            <Post key={post.id} id={post.id} title={post.title} text={post.text}/>);
 
         return (
             <div>

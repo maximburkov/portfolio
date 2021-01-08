@@ -1,18 +1,3 @@
-const posts = [
-    {
-        "title" : "Shocking news",
-        "text" : "It was yesterday..."
-    },
-    {
-        "title" : "Good news",
-        "text" : "Baby tiger was born in the zoo."
-    },
-    {
-        "title" : "3rd news",
-        "text" : "tbd..."
-    }
-];
-
 const initialState = {
     posts: []
 }
@@ -26,8 +11,9 @@ export default (state = initialState, action) => {
         console.log(action.payload);
         return { ...state, posts : [...state.posts, newPost] };
     case "DELETE":
-        console.log("Deleting post.");
-        return state
+        const id = action.payload.id
+        console.log(`delete post with id: ${id}`);
+        return { ...state, posts: state.posts.filter(p => p.id !== id) }
     default:
         console.log("Default action");
         return state

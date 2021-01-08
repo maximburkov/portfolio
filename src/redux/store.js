@@ -3,14 +3,17 @@ import rootReducer from './reducers/index';
 
 const posts = [
     {
+        "id" : 1,
         "title" : "Shocking news",
         "text" : "It was yesterday..."
     },
     {
+        "id" : 2,
         "title" : "Good news",
         "text" : "It's good."
     },
     {
+        "id" : 3,
         "title" : "3rd news",
         "text" : "tbd..."
     }
