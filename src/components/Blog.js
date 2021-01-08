@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import AddPost from './AddPost';
 import Post from './Post'
+import { Link, BrowserRouter as Router, Route } from 'react-router-dom'
+import CreatePost from './CreatePost'
 
 class Blog extends Component {
     constructor(props) {
@@ -14,7 +16,8 @@ class Blog extends Component {
 
         return (
             <div>
-                <h1>Blog</h1>
+                <Link className="btn btn-primary" to="/CreatePost">Create new post</Link>
+                <Route path="/CreatePost" component={CreatePost} />
                 <AddPost/>
                 {postsToRender}
             </div>

@@ -6,6 +6,7 @@ import { Link, Route } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav'
 import About from './About'
 import Blog from './Blog'
+import CreatePost from './CreatePost'
 
 export default class Navigation extends Component {
     render() {
@@ -28,6 +29,9 @@ export default class Navigation extends Component {
                     <Switch>
                         <Route path="/About" component={About} />
                         <Route path="/Blog" component={Blog} />
+                        <Route path="/CreatePost">
+                            <CreatePost/>
+                        </Route>
                     </Switch>
                 </div>
             </div>

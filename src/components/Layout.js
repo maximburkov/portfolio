@@ -9,11 +9,6 @@ export class Layout extends Component {
         return (
             <div>
                 <Router>
-                    {/* <Link to="/About">About</Link>
-                    <br/>
-                    <Link to="/Blog">Blog</Link>
-                    <Route path="/About" component={About} />
-                    <Route path="/Blog" component={Blog} /> */}
                     <Navigation/>
                 </Router>
             </div>
