@@ -14,8 +14,7 @@ class Post extends Component {
             <div>
                 <h1>{this.props.title}</h1>
                 <div>{this.props.text}</div>
-                <Link className="btn btn-primary" to={`/posts/${this.props.id}`}>View</Link>
-                <Route exact path="/Posts/:postId" component={ViewPost} />
+                <Link className="btn btn-primary" to={`/Posts/${this.props.id}`}>View</Link>
                 <button onClick={this.handleDeletePost}>Delete</button>
             </div>
         )

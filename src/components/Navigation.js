@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav'
 import About from './About'
 import Blog from './Blog'
 import CreatePost from './CreatePost'
+import { ViewPost } from './ViewPost'
 
 export default class Navigation extends Component {
     render() {
@@ -32,6 +33,7 @@ export default class Navigation extends Component {
                         <Route path="/CreatePost">
                             <CreatePost/>
                         </Route>
+                        <Route exact path="/Posts/:postId" component={ViewPost} />
                     </Switch>
                 </div>
             </div>
