@@ -1,3 +1,5 @@
+import { ApiService } from "../api/ApiService";
+
 let nextId = 3;
 
 export const addPost = payload => ({
@@ -11,6 +13,11 @@ export const deletePost = id => ({
 })
 
 export const updatePost = payload => ({
+    type: "UPDATE",
+    payload : {...payload }
+})
+
+export async const fetchPosts = payload => ({
     type: "UPDATE",
     payload : {...payload }
 })

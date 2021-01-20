@@ -8,7 +8,7 @@ import About from './About'
 import Blog from './Blog'
 import CreatePost from './CreatePost'
 import { ViewPost } from './ViewPost'
-import { EditPost } from './EditPost'
+import EditPost from './EditPost'
 
 export default class Navigation extends Component {
     render() {

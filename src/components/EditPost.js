@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
 import { updatePost } from '../redux/actions'
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 
-const EditPost = ({ match }) => {
+const EditPost = ({ match, updatePost }) => {
   const { postId } = match.params
 
   const post = useSelector(state =>
@@ -17,6 +18,7 @@ const EditPost = ({ match }) => {
   const onTextChanged = e => setText(e.target.value)
 
   const handleSavePost = () => {
+      debugger;
       updatePost( { id: postId, title: title, text: text} );
   }
 
@@ -24,10 +26,10 @@ const EditPost = ({ match }) => {
       <div>
             <h2>Edit post:</h2>
             <label>Title:</label>
-            <input id="post-title" type="text" onChange= { onTitleChanged }></input>
+            <input id="post-title" type="text" value={title} onChange= { onTitleChanged }></input>
             <label>Text:</label>
-            <input id="post-text" type="text" onChange = { onTextChanged }></input>
-            <button onClick={ handleSavePost }>Create</button>
+            <input id="post-text" type="text" value={text} onChange = { onTextChanged }></input>
+            <Link onClick={handleSavePost} className="btn btn-primary" to="/Blog">Save</Link>
       </div>
   )
 }

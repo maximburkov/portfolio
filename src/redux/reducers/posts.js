@@ -3,6 +3,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
+    debugger;
     switch (action.type) {
 
     case "ADD": 
@@ -16,7 +17,7 @@ export default (state = initialState, action) => {
         return { ...state, posts: state.posts.filter(p => p.id !== id) };
     case "UPDATE":
         const updatedPost = action.payload;
-        console.log(`Updating post with id: ${id}`);
+        
         return { 
             ...state, 
             posts: state.posts.map(item => item.id == updatedPost.id ? updatedPost : item) 
