@@ -13,7 +13,14 @@ export default (state = initialState, action) => {
     case "DELETE":
         const id = action.payload.id
         console.log(`delete post with id: ${id}`);
-        return { ...state, posts: state.posts.filter(p => p.id !== id) }
+        return { ...state, posts: state.posts.filter(p => p.id !== id) };
+    case "UPDATE":
+        const updatedPost = action.payload;
+        console.log(`Updating post with id: ${id}`);
+        return { 
+            ...state, 
+            posts: state.posts.map(item => item.id == updatedPost.id ? updatedPost : item) 
+        };
     default:
         console.log("Default action");
         return state

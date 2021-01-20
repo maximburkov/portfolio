@@ -2,7 +2,6 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 export const ViewPost = ({ match }) => {
-  debugger;
   const { postId } = match.params
 
   const post = useSelector(state =>
