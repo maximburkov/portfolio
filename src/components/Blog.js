@@ -4,11 +4,17 @@ import AddPost from './AddPost';
 import Post from './Post'
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom'
 import CreatePost from './CreatePost'
+import { fetchPosts } from '../redux/actions';
 
 class Blog extends Component {
     constructor(props) {
         super(props);
       }
+
+    componentDidMount(){
+        console.log("Blog did mount");
+        this.props.fetchPosts();
+    }
 
     render() {
         const postsToRender = this.props.posts.map((post) => 
@@ -30,4 +36,4 @@ const mapStateToProps = state => {
     return { posts };
 }
 
-export default connect(mapStateToProps)(Blog);
+export default connect(mapStateToProps, {fetchPosts} )(Blog);

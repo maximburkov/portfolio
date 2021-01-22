@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addPost, asyncOperation } from '../redux/actions';
+import { addPost, fetchPosts } from '../redux/actions';
 import { connect } from "react-redux";
 
 class AddPost extends Component {
@@ -15,7 +15,7 @@ class AddPost extends Component {
     }
 
     performAsyncOPeration = () => {
-        this.props.asyncOperation();
+        this.props.fetchPosts();
     };
     
     render() {
@@ -35,5 +35,5 @@ class AddPost extends Component {
 
 export default connect(
     null,
-    { addPost, asyncOperation }
+    { addPost, fetchPosts }
   )(AddPost);

@@ -26,13 +26,14 @@ export const receive = payload => ({
     payload
     });
 
-export function asyncOperation() {
+export function fetchPosts() {
     return async function (dispatch) {
       dispatch(request());
       const response = await fetch('http://localhost:57727/api/post');
       const data = await response.json();
+      debugger;
       console.log(data);
-      dispatch(receive());
+      dispatch(receive(data));
     };
    }
 
