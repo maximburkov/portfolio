@@ -17,7 +17,41 @@ export const updatePost = payload => ({
     payload : {...payload }
 })
 
-export async const fetchPosts = payload => ({
-    type: "UPDATE",
-    payload : {...payload }
-})
+export const request = () => ({
+    type: "REQUEST",
+    });
+
+export const receive = payload => ({
+    type: "RECEIVE",
+    payload
+    });
+
+export function asyncOperation() {
+    return function (dispatch) {
+      dispatch(request());
+      return TestPromiseFunc('TEST PROMISE PARAM')
+      .then(
+         response => {
+             console.log(`In promise response: ${response}`);
+             dispatch(receive());
+         },
+         error => console.log('An error occurred.', error),
+     );
+    };
+   }
+
+
+  function TestPromiseFunc(x) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log(`x in settimeout: ${x}`);
+        resolve(x);
+      }, 2000);
+    });
+}
+
+
+// export async const fetchPosts = payload => ({
+//     type: "UPDATE",
+//     payload : {...payload }
+// })

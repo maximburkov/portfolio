@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addPost } from '../redux/actions';
+import { addPost, asyncOperation } from '../redux/actions';
 import { connect } from "react-redux";
 
 class AddPost extends Component {
@@ -13,6 +13,10 @@ class AddPost extends Component {
 
         this.props.addPost({title, text});
     }
+
+    performAsyncOPeration = () => {
+        this.props.asyncOperation();
+    };
     
     render() {
         return (
@@ -23,6 +27,7 @@ class AddPost extends Component {
                 <label>Text:</label>
                 <input id="post-text" type="text"></input>
                 <button onClick={this.handleAddPost }>Create</button>
+                <button onClick={this.performAsyncOPeration }>Async</button>
             </div>
         )
     }
@@ -30,5 +35,5 @@ class AddPost extends Component {
 
 export default connect(
     null,
-    { addPost }
+    { addPost, asyncOperation }
   )(AddPost);

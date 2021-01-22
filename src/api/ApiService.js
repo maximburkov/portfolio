@@ -35,19 +35,19 @@
 //     return client(endpoint, { ...customConfig, method: 'POST', })
 //   }
 
-  export async function ApiService(data) {
-    await printAndResolveAfter2seconds(data);
-  }
+  // export async function ApiService(data) {
+  //   await printAndResolveAfter2seconds(data);
+  // }
   
-  client.get = function (data) {
-    return ApiService(data);
-  }
+  // client.get = function (data) {
+  //   return ApiService(data);
+  // }
 
-  function printAndResolveAfter2seconds(x) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        console.log(x);
-        resolve(x);
-      }, 2000);
-    });
-  }
+  // function printAndResolveAfter2seconds(x) {
+  //   return new Promise(resolve => {
+  //     setTimeout(() => {
+  //       console.log(x);
+  //       resolve(x);
+  //     }, 2000);
+  //   });
+  // }
