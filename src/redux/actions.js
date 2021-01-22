@@ -29,8 +29,9 @@ export const receive = payload => ({
 export function asyncOperation() {
     return async function (dispatch) {
       dispatch(request());
-      const res = await TestPromiseFunc('TEST PROMISE PARAM');
-      console.log(`after await result: ${res}`);
+      const response = await fetch('http://localhost:57727/api/post');
+      const data = await response.json();
+      console.log(data);
       dispatch(receive());
     };
    }
