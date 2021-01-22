@@ -27,16 +27,11 @@ export const receive = payload => ({
     });
 
 export function asyncOperation() {
-    return function (dispatch) {
+    return async function (dispatch) {
       dispatch(request());
-      return TestPromiseFunc('TEST PROMISE PARAM')
-      .then(
-         response => {
-             console.log(`In promise response: ${response}`);
-             dispatch(receive());
-         },
-         error => console.log('An error occurred.', error),
-     );
+      const res = await TestPromiseFunc('TEST PROMISE PARAM');
+      console.log(`after await result: ${res}`);
+      dispatch(receive());
     };
    }
 
@@ -45,7 +40,7 @@ export function asyncOperation() {
     return new Promise(resolve => {
       setTimeout(() => {
         console.log(`x in settimeout: ${x}`);
-        resolve(x);
+        resolve(x + '!');
       }, 2000);
     });
 }
