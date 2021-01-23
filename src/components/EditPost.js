@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
-import { updatePost } from '../redux/actions'
+import { updatePost } from '../redux/actions/posts'
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 

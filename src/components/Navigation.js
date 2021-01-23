@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { NavItem } from 'react-bootstrap'
 import Switch from 'react-bootstrap/esm/Switch'
+import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link, Route } from 'react-router-dom'
-import Nav from 'react-bootstrap/Nav'
 import About from './About'
 import Blog from './Blog'
 import CreatePost from './CreatePost'
-import { ViewPost } from './ViewPost'
 import EditPost from './EditPost'
+import { ViewPost } from './ViewPost'
 
 export default class Navigation extends Component {
     render() {

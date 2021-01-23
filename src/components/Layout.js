@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Link, BrowserRouter as Router, Route } from 'react-router-dom'
-import About from './About'
-import Blog from './Blog'
+import { BrowserRouter as Router } from 'react-router-dom'
 import Navigation from './Navigation'
 
 export class Layout extends Component {

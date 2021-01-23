@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { deletePost } from '../redux/actions'
+import { deletePost } from '../redux/actions/posts'
 import { connect } from "react-redux";
 import { Link, Route } from 'react-router-dom'
 
@@ -15,7 +15,7 @@ class Post extends Component {
                 <div>{this.props.text}</div>
                 <Link className="btn btn-primary" to={`/Posts/${this.props.id}`}>View</Link>
                 <Link className="btn btn-secondary" to={`/EditPost/${this.props.id}`}>Edit</Link>
-                <button onClick={this.handleDeletePost}>Delete</button>
+                <button className="btn btn-danger" onClick={this.handleDeletePost}>Delete</button>
             </div>
         )
     }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import AddPost from './AddPost';
 import Post from './Post'
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom'
 import CreatePost from './CreatePost'
-import { fetchPosts } from '../redux/actions';
+import { fetchPosts } from '../redux/actions/posts';
 
 class Blog extends Component {
     constructor(props) {
@@ -12,7 +11,6 @@ class Blog extends Component {
       }
 
     componentDidMount(){
-        console.log("Blog did mount");
         this.props.fetchPosts();
     }
 
@@ -24,7 +22,6 @@ class Blog extends Component {
             <div>
                 <Link className="btn btn-primary" to="/CreatePost">Create new post</Link>
                 <Route path="/CreatePost" component={CreatePost} />
-                <AddPost/>
                 {postsToRender}
             </div>
         )
