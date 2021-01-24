@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { login, logout } from '../redux/actions/users'
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, Form } from 'react-bootstrap'
 
 const Login = ({isLoggedIn, login, logout}) => {
     const [show, setShow] = useState(false);
@@ -31,7 +31,18 @@ const Login = ({isLoggedIn, login, logout}) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Logging in</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="form-login">
+                            <Form.Label>Login</Form.Label>
+                            <Form.Control type="text" placeholder="Enter login" />
+                        </Form.Group>
+                        <Form.Group controlId="form-password">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Enter password" />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Cancel
