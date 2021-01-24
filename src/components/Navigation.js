@@ -15,7 +15,17 @@ export default class Navigation extends Component {
         return (
             <div>
                 <Navbar bg="light" expand="lg">
-                    <Navbar.Brand as={Link} to="/About">Home</Navbar.Brand>
+                    {/* <Navbar.Brand as={Link} to="/About">Home</Navbar.Brand> */}
+                    <Navbar.Brand>
+                    <img
+                        alt=""
+                        src="favicon.ico"
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top"
+                    />{' '}
+                    Maxim's blog
+                    </Navbar.Brand>
                     <Navbar.Collapse>
                         <Nav className="mr-auto">
                             <NavItem>

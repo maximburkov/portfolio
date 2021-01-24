@@ -25,7 +25,6 @@ export default (state = initialState, action) => {
         console.log('Reducer: request');
         return state;
     case RECEIVE_POSTS:
-        debugger;
         console.log('Reducer: receive');
         return {...state, posts: action.payload };
     default:
