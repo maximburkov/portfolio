@@ -1,5 +1,8 @@
+import { LOGIN, LOGOUT } from '../actions/users';
+
 const initialState = {
     // this is only for test purposes.
+    isLoggedIn: false,
     users: [
         {
             login: 'Admin',
@@ -20,11 +23,15 @@ const initialState = {
 }
 
 export default (state = initialState, { type, payload }) => {
+    debugger;
     switch (type) {
 
-    case "TEST":
-        return { ...state, ...payload }
-
+    case LOGIN:
+        console.log('Logged in...');
+        return { ...state, isLoggedIn : true }
+    case LOGOUT:
+        console.log('Logged out...');
+        return { ...state, isLoggedIn : false }
     default:
         return state
     }

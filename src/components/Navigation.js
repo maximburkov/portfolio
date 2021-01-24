@@ -9,6 +9,7 @@ import Blog from './Blog'
 import CreatePost from './CreatePost'
 import EditPost from './EditPost'
 import { ViewPost } from './ViewPost'
+import Login from './Login' 
 
 export default class Navigation extends Component {
     render() {
@@ -37,7 +38,8 @@ export default class Navigation extends Component {
                     </Navbar.Collapse>
                     <Nav className="mr-auto">
                         <NavItem className="navbar-right">
-                            <Nav.Link as={Link} to="/Blog">Log In</Nav.Link>
+                            {/* <Nav.Link as={Link} to="/Blog">Log In</Nav.Link> */}
+                            <Login/>
                         </NavItem>
                     </Nav>
                 </Navbar>
