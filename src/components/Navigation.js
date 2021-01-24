@@ -14,9 +14,8 @@ export default class Navigation extends Component {
     render() {
         return (
             <div>
-                <Navbar bg="light" expand="lg">
-                    {/* <Navbar.Brand as={Link} to="/About">Home</Navbar.Brand> */}
-                    <Navbar.Brand>
+                <Navbar bg="dark" variant="dark" expand="sm">
+                    <Navbar.Brand as={Link} to="">
                     <img
                         alt=""
                         src="favicon.ico"
@@ -29,17 +28,22 @@ export default class Navigation extends Component {
                     <Navbar.Collapse>
                         <Nav className="mr-auto">
                             <NavItem>
-                                <Nav.Link as={Link} to="/About">About</Nav.Link>
+                                <Nav.Link as={Link} to="">About</Nav.Link>
                             </NavItem>
                             <NavItem>
                                 <Nav.Link as={Link} to="/Blog">Blog</Nav.Link>
                             </NavItem>
                         </Nav>
                     </Navbar.Collapse>
+                    <Nav className="mr-auto">
+                        <NavItem className="navbar-right">
+                            <Nav.Link as={Link} to="/Blog">Log In</Nav.Link>
+                        </NavItem>
+                    </Nav>
                 </Navbar>
                 <div>
                     <Switch>
-                        <Route path="/About" component={About} />
+                        <Route path="" component={About} />
                         <Route path="/Blog" component={Blog} />
                         <Route path="/CreatePost">
                             <CreatePost/>
