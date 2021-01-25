@@ -6,13 +6,20 @@ import { Button, Modal, Form } from 'react-bootstrap'
 
 const Login = ({isLoggedIn, login, logout}) => {
     const [show, setShow] = useState(false);
+    const [isError, setError] = useState(false);
+    
+    const [name, setLogin] = useState('');
+    const [password, setPassword] = useState('');
+
+    const onLoginChanged = e => setLogin(e.target.value);
+    const onPasswordChanged = e => setPassword(e.target.value);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const handleLogin = () => {
         console.log('handle login');
-        login();
+        login(name, password);
     }
 
     const handleLogout = () => {
@@ -35,11 +42,17 @@ const Login = ({isLoggedIn, login, logout}) => {
                     <Form>
                         <Form.Group controlId="form-login">
                             <Form.Label>Login</Form.Label>
-                            <Form.Control type="text" placeholder="Enter login" />
+                            <Form.Control 
+                            type="text" 
+                            placeholder="Enter login" 
+                            onChange={onLoginChanged}/>
                         </Form.Group>
                         <Form.Group controlId="form-password">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Enter password" />
+                            <Form.Control 
+                            type="password" 
+                            placeholder="Enter password" 
+                            onChange={onPasswordChanged}/>
                         </Form.Group>
                     </Form>
                 </Modal.Body>

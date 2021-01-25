@@ -27,8 +27,16 @@ export default (state = initialState, { type, payload }) => {
     switch (type) {
 
     case LOGIN:
+        debugger;
         console.log('Logged in...');
-        return { ...state, isLoggedIn : true }
+        const user = state.users.find(u => u.login === payload.login && u.password === payload.password);
+
+        if(user === undefined){
+            return { ...state, isLoggedIn : true, isLoginError : true }
+        }
+        else{
+            return { ...state, user, isLoggedIn : false }
+        }
     case LOGOUT:
         console.log('Logged out...');
         return { ...state, isLoggedIn : false }

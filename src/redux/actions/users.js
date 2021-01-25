@@ -1,10 +1,13 @@
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 
-export const login = () => ({
-    type: LOGOUT
+export const login = (login, password) => ({
+    type: LOGIN,
+    payload : { login, password }
 })
 
 export const logout = () => ({
-    type: LOGIN
+    type: LOGOUT
 })
+
+function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
