@@ -18,7 +18,6 @@ const EditPost = ({ match, updatePost }) => {
   const onTextChanged = e => setText(e.target.value)
 
   const handleSavePost = () => {
-      debugger;
       updatePost( { id: postId, title: title, text: text} );
   }
 

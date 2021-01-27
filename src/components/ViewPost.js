@@ -8,8 +8,6 @@ export const ViewPost = ({ match }) => {
     state.posts.posts.find(post => post.id == postId)
   )
 
-  debugger;
-
   return (
       <div>
         <h1>View post</h1>

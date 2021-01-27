@@ -1,13 +1,16 @@
 import React, {useState} from 'react'
-import { login, logout } from '../redux/actions/users'
+import { login, logout, resetError } from '../redux/actions/users'
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { Button, Modal, Form } from 'react-bootstrap'
+import { Button, Modal, Form, Alert } from 'react-bootstrap'
 
-const Login = ({isLoggedIn, login, logout}) => {
+const Login = ({isLoggedIn,
+     login,
+     logout, 
+     resetError, 
+     isLoginError}) => {
+         debugger;
     const [show, setShow] = useState(false);
-    const [isError, setError] = useState(false);
-    
     const [name, setLogin] = useState('');
     const [password, setPassword] = useState('');
 
@@ -15,7 +18,10 @@ const Login = ({isLoggedIn, login, logout}) => {
     const onPasswordChanged = e => setPassword(e.target.value);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        resetError();
+        setShow(true);
+    }
 
     const handleLogin = () => {
         console.log('handle login');
@@ -26,6 +32,11 @@ const Login = ({isLoggedIn, login, logout}) => {
         console.log('handle logout');
         logout();
     }
+
+    React.useEffect(() => {
+        if(show && isLoggedIn)
+            setShow(false);
+    }, [isLoggedIn])
 
     return (
         <div>    
@@ -40,6 +51,11 @@ const Login = ({isLoggedIn, login, logout}) => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
+                        {isLoginError &&
+                          <Alert variant="danger">
+                          Username or password is incorrect
+                        </Alert>
+                        }
                         <Form.Group controlId="form-login">
                             <Form.Label>Login</Form.Label>
                             <Form.Control 
@@ -69,11 +85,11 @@ const Login = ({isLoggedIn, login, logout}) => {
   )
 }
 
-const mapStateToProps = state => {
-    const isLoggedIn = state.users.isLoggedIn;
-    return { isLoggedIn };
-}
+const mapStateToProps = state => ({ 
+    isLoggedIn : state.users.isLoggedIn,
+    isLoginError : state.users.isLoginError
+});
 
-export default connect(mapStateToProps, {login, logout} )(Login);
+export default connect(mapStateToProps, {login, logout, resetError} )(Login);
 
 
