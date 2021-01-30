@@ -45,7 +45,7 @@ export default class Navigation extends Component {
                 </Navbar>
                 <div>
                     <Switch>
-                        <Route path="" component={About} />
+                        <Route exact path="/" component={About} />
                         <Route path="/Blog" component={Blog} />
                         <Route path="/CreatePost">
                             <CreatePost/>
