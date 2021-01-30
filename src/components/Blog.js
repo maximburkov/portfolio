@@ -18,10 +18,16 @@ class Blog extends Component {
         const postsToRender = this.props.posts.map((post) => 
             <Post key={post.id} id={post.id} title={post.title} text={post.text}/>);
 
+        const isAdmin = this.props.isAdmin;      
+
         return (
             <div>
-                <Link className="btn btn-primary" to="/CreatePost">Create new post</Link>
-                <Route path="/CreatePost" component={CreatePost} />
+                {isAdmin &&
+                <div>
+                    <Link className="btn btn-primary" to="/CreatePost">Create new post</Link>
+                    <Route path="/CreatePost" component={CreatePost} />
+                </div>
+                }
                 {postsToRender}
             </div>
         )
@@ -30,7 +36,8 @@ class Blog extends Component {
 
 const mapStateToProps = state => {
     const posts = state.posts.posts;
-    return { posts };
+    const isAdmin = state.users.user ? state.users.user.isAdmin : false;
+    return { posts, isAdmin };
 }
 
 export default connect(mapStateToProps, {fetchPosts} )(Blog);

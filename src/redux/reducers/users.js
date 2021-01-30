@@ -2,22 +2,23 @@ import { LOGIN, LOGOUT, RESET_ERROR } from '../actions/users';
 
 const initialState = {
     // this is only for test purposes.
+    user: null,
     isLoggedIn: false,
     users: [
         {
             login: 'admin',
             password: 'admin',
-            IsAdmin: true
+            isAdmin: true
         },
         {
             login: 'guest',
             password: 'guest',
-            IsAdmin: false
+            isAdmin: false
         },
         {
             login: 'guest2',
             password: 'guest2',
-            IsAdmin: false
+            isAdmin: false
         }
     ]
 }
@@ -25,7 +26,6 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
     switch (type) {
     case LOGIN:
-        console.log('Logged in...');
         const user = state.users.find(u => u.login === payload.login && u.password === payload.password);
 
         if(user === undefined){
@@ -35,8 +35,7 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, user, isLoggedIn : true, isLoginError : false }
         }
     case LOGOUT:
-        console.log('Logged out...');
-        return { ...state, isLoggedIn : false }
+        return { ...state, isLoggedIn : false, user: null }
     case RESET_ERROR:
         return { ...state, isLoginError: false }
     default:
