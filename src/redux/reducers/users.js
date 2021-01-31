@@ -1,9 +1,11 @@
 import { LOGIN, LOGOUT, RESET_ERROR } from '../actions/users';
 
+let user = JSON.parse(localStorage.getItem('user'));
+
 const initialState = {
     // this is only for test purposes.
-    user: null,
-    isLoggedIn: false,
+    user,
+    isLoggedIn: user ? true : false,
     users: [
         {
             login: 'admin',
@@ -32,9 +34,11 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, isLoggedIn : false, isLoginError : true }
         }
         else{
+            localStorage.setItem('user', JSON.stringify(user));
             return { ...state, user, isLoggedIn : true, isLoginError : false }
         }
     case LOGOUT:
+        localStorage.removeItem('user');
         return { ...state, isLoggedIn : false, user: null }
     case RESET_ERROR:
         return { ...state, isLoginError: false }

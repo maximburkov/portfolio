@@ -3,12 +3,14 @@ import { login, logout, resetError } from '../redux/actions/users'
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { Button, Modal, Form, Alert } from 'react-bootstrap'
+import Navbar from 'react-bootstrap/Navbar'
 
 const Login = ({isLoggedIn,
      login,
      logout, 
      resetError, 
-     isLoginError}) => {
+     isLoginError,
+     loggedInAs}) => {
          debugger;
     const [show, setShow] = useState(false);
     const [name, setLogin] = useState('');
@@ -24,12 +26,10 @@ const Login = ({isLoggedIn,
     }
 
     const handleLogin = () => {
-        console.log('handle login');
         login(name, password);
     }
 
     const handleLogout = () => {
-        console.log('handle logout');
         logout();
     }
 
@@ -41,7 +41,13 @@ const Login = ({isLoggedIn,
     return (
         <div>    
             {isLoggedIn
-                ? <Button onClick={handleLogout} variant="outline-light">Log Out</Button>
+                ? 
+                <div>
+                    <Navbar.Text>
+                        Signed in as: {loggedInAs} {' '}
+                    </Navbar.Text>
+                    <Button onClick={handleLogout} variant="outline-light">Log Out</Button>
+                </div>
                 : <Button onClick={handleShow} variant="outline-light">Log In</Button>
             } 
             
@@ -87,7 +93,8 @@ const Login = ({isLoggedIn,
 
 const mapStateToProps = state => ({ 
     isLoggedIn : state.users.isLoggedIn,
-    isLoginError : state.users.isLoginError
+    isLoginError : state.users.isLoginError,
+    loggedInAs : state.users.user ? state.users.user.login : ''
 });
 
 export default connect(mapStateToProps, {login, logout, resetError} )(Login);
