@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { addPost } from '../redux/actions/posts';
+import { addPostAsync } from '../redux/actions/posts';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ class CreatePost extends Component {
         const title = document.getElementById("post-title").value;
         const text = document.getElementById("post-text").value;
 
-        this.props.addPost({title, text});
+        this.props.addPostAsync({title, text});
     }
 
     render() {
@@ -26,5 +26,5 @@ class CreatePost extends Component {
 
 export default connect(
     null,
-    { addPost }
+    { addPostAsync }
   )(CreatePost);

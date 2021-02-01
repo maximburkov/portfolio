@@ -1,3 +1,5 @@
+import { apiUrl } from  '../../common/Settings';
+
 export const ADD_POST = "ADD_POST";
 export const DELETE_POST = "DELETE_POST";
 export const UPDATE_POST = "UPDATE_POST";
@@ -8,7 +10,7 @@ let nextId = 3;
 
 export const addPost = payload => ({
     type: ADD_POST,
-    payload : {...payload, id: ++nextId }
+    payload
 })
 
 export const deletePost = id => ({
@@ -33,25 +35,25 @@ export const receive = payload => ({
 export function fetchPosts() {
     return async function (dispatch) {
       dispatch(request());
-      const response = await fetch('http://localhost:57727/api/post');
+      const response = await fetch(`${apiUrl}/post`);
       const data = await response.json();
       console.log(data);
       dispatch(receive(data));
     };
    }
 
-
-  function TestPromiseFunc(x) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        console.log(`x in settimeout: ${x}`);
-        resolve(x + '!');
-      }, 2000);
-    });
-}
-
-
-// export async const fetchPosts = payload => ({
-//     type: "UPDATE",
-//     payload : {...payload }
-// })
+   export function addPostAsync(payload) {
+    return async function (dispatch) {
+      const response = await fetch(`${apiUrl}/post`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      debugger;
+      const data = await response.json();
+      console.log(data);
+      dispatch(addPost(data));
+    };
+   }
