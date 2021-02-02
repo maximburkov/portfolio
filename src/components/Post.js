@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { deletePost } from '../redux/actions/posts'
+import { deletePostAsync } from '../redux/actions/posts'
 import { connect } from "react-redux";
 import { Link, Route } from 'react-router-dom'
 
 class Post extends Component {
     handleDeletePost = () => {
-        this.props.deletePost(this.props.id);
+        this.props.deletePostAsync(this.props.id);
     }
 
     render() {
@@ -31,5 +31,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { deletePost }
+    { deletePostAsync }
   )(Post);

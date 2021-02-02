@@ -37,7 +37,8 @@ namespace PortfolioService
 
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
-                .AllowAnyHeader());
+                .AllowAnyHeader()
+                .AllowAnyMethod());
 
             app.UseRouting();
 

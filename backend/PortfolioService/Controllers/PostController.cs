@@ -44,16 +44,24 @@ namespace PortfolioService.Controllers
 
         // PUT: api/Post/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult<Post>> Put(string id, [FromBody] Post post)
         {
-            throw new NotImplementedException();
+            if (!await _context.Posts.AnyAsync(i => i.Id == id)) return NotFound();
+            _context.Posts.Update(post);
+            await _context.SaveChangesAsync();
+            return Ok(post);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(string id)
         {
-            throw new NotImplementedException();
+            var post = await _context.Posts.FirstOrDefaultAsync(i => i.Id == id);
+            if (post == null) return NotFound();
+            _context.Posts.Remove(post);
+            await _context.SaveChangesAsync();
+            return NoContent();
+
         }
     }
 }

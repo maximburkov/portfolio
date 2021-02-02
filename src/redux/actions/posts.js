@@ -51,9 +51,32 @@ export function fetchPosts() {
         },
         body: JSON.stringify(payload)
       });
-      debugger;
       const data = await response.json();
       console.log(data);
       dispatch(addPost(data));
+    };
+   }
+
+   export function updatePostAsync(payload) {
+    return async function (dispatch) {
+      const response = await fetch(`${apiUrl}/post/${payload.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json();
+      console.log(data);
+      dispatch(updatePost(data));
+    };
+   }
+
+   export function deletePostAsync(id) {
+    return async function (dispatch) {
+      const response = await fetch(`${apiUrl}/post/${id}`, {
+        method: 'DELETE',
+      });
+      dispatch(deletePost(id));
     };
    }

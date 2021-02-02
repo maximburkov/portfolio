@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
-import { updatePost } from '../redux/actions/posts'
+import { updatePostAsync } from '../redux/actions/posts'
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 
-const EditPost = ({ match, updatePost }) => {
+const EditPost = ({ match, updatePostAsync }) => {
   const { postId } = match.params
 
   const post = useSelector(state =>
@@ -18,7 +18,7 @@ const EditPost = ({ match, updatePost }) => {
   const onTextChanged = e => setText(e.target.value)
 
   const handleSavePost = () => {
-      updatePost( { id: postId, title: title, text: text} );
+    updatePostAsync( { id: postId, title: title, text: text} );
   }
 
   return (
@@ -35,5 +35,5 @@ const EditPost = ({ match, updatePost }) => {
 
 export default connect(
     null,
-    { updatePost }
+    { updatePostAsync }
   )(EditPost);
