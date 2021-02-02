@@ -11,11 +11,13 @@ namespace PortfolioService
     {
         private static void AddTestData(AppContext context)
         {
+            var firstPostGuid = Guid.NewGuid().ToString();
+
             var posts = new List<Post>
             {
                 new Post
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    Id = firstPostGuid,
                     Title = "Some new post",
                     Text = "Some interesting info in post."
                 },
@@ -33,7 +35,28 @@ namespace PortfolioService
                 }
             };
 
+            var comments = new List<Comment>
+            {
+                new Comment
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    AuthorLogin = "Guest",
+                    DateCreated = DateTime.Now,
+                    PostId = firstPostGuid,
+                    Text = "Cool post!"
+                },
+                new Comment
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    AuthorLogin = "Admin",
+                    DateCreated = DateTime.Now,
+                    PostId = firstPostGuid,
+                    Text = "Thank You!"
+                },
+            };
+
             context.Posts.AddRange(posts);
+            context.Comments.AddRange(comments);
 
             context.SaveChanges();
         }

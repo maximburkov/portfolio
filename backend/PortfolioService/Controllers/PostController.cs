@@ -26,7 +26,7 @@ namespace PortfolioService.Controllers
         }
 
         // GET: api/Post/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Post>> Get(string id)
         {
             return Ok(await _context.Posts.FirstOrDefaultAsync(p => p.Id == id));
