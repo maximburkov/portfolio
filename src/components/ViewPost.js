@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import Comments from './Comments'
 
 export const ViewPost = ({ match }) => {
   const { postId } = match.params
@@ -13,6 +14,9 @@ export const ViewPost = ({ match }) => {
         <h1>View post</h1>
         <h2>{post.title}</h2>
         <p>{post.text}</p>
+        <div>
+          <Comments postId={postId} />
+        </div>
       </div>
   )
 }
