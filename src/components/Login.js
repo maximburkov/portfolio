@@ -11,7 +11,6 @@ const Login = ({isLoggedIn,
      resetError, 
      isLoginError,
      loggedInAs}) => {
-         debugger;
     const [show, setShow] = useState(false);
     const [name, setLogin] = useState('');
     const [password, setPassword] = useState('');

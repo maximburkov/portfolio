@@ -6,8 +6,6 @@ export const UPDATE_POST = "UPDATE_POST";
 export const REQUEST_POSTS = "REQUEST_POSTS";
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 
-let nextId = 3;
-
 export const addPost = payload => ({
     type: ADD_POST,
     payload

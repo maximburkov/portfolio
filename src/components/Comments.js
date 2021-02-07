@@ -1,12 +1,18 @@
 import React from 'react';
 import { connect, useSelector } from 'react-redux';
 import Comment from './Comment';
+import { fetchComments } from '../redux/actions/comments';
 
-const Comments = ({ postId }) => {
-    const comments = useSelector(state => state.comments.comments);
-    //const posts = useSelector(state => state.comments.comments.filter(c => c.postId === postId))
+const Comments = ({ postId, 
+    comments, 
+    fetchComments }) => {
+    const commentsForPost = comments.filter(c => c.postId === postId);
+
+    React.useEffect(() => {
+        fetchComments();
+    })
     
-    const commentsToRender = comments.map(comment => 
+    const commentsToRender = commentsForPost.map(comment => 
         <Comment 
             key = { comment.id }
             text = { comment.text }
@@ -20,5 +26,9 @@ const Comments = ({ postId }) => {
     )
 }
 
-export default connect( null, null )(Comments);
+const mapStateToProps = state => ({
+    comments: state.comments.comments
+})
+
+export default connect(mapStateToProps, { fetchComments })(Comments);
 
