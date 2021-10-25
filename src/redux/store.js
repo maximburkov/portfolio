@@ -3,7 +3,6 @@ import rootReducer from './reducers/index';
 import thunk from 'redux-thunk';
 
 const posts = [];
-const users = ['fuck'];
 
 const initialState = {
     posts : {
